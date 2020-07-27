@@ -59,8 +59,8 @@ csociales_models<-lm(GSE ~ prom_csociales, data=proc_SIM_IDPS)
 modelom <- lm(GSE ~ ind_clima + ind_autoestima + prom_lectura + prom_matematica + prom_csociales, data=proc_SIM_IDPS)
 
 #Tabla publicable de regresion multiple 
-tab_model(list(modelom), show.ci=FALSE,
-                  p.style = "asterisk", dv.labels = c("Modelo1"),
+tab_model(list(clima_models, autoestima_models, lectura_models, matematica_models, csociales_models, modelom), show.ci=FALSE,
+                  p.style = "asterisk", dv.labels = c("Modelo1", "modelo2", "modelo3", "modelo4", "modelo5", "modelo6"),
                   string.pred = "Predictores", string.est = "β")
 
 
