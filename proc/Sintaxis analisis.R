@@ -63,8 +63,5 @@ tab_model(list(modelom), show.ci=FALSE,
                   p.style = "asterisk", dv.labels = c("Modelo1"),
                   string.pred = "Predictores", string.est = "β")
 
-help(package = "sjPlot")
-install_cran("sjPlot")
-install.packages()
 
 
