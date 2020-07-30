@@ -43,13 +43,11 @@ SIM_IDPS<- left_join(x = IDPS2018,y = SIMCE2018, by ="rbd")
 View(SIM_IDPS)
 
 # Seleccionar variables
-proc_SIM_IDPS <- SIM_IDPS %>% select("nom_reg_rbd","cod_grupo.y",  "ind_cc_rbd", "ind_am_rbd",
+proc_SIM_IDPS <- SIM_IDPS %>% select("cod_grupo.y",  "ind_cc_rbd", "ind_am_rbd",
                                    "prom_lect2m_rbd", "prom_mate2m_rbd", "prom_nat2m_rbd") 
 
 
 View(proc_SIM_IDPS)
-
-proc_SIM_IDPS2 <- iris[iris$Species == "setosa",]
 
 # Renombrar variables
 proc_SIM_IDPS <- proc_SIM_IDPS %>% rename("GSE" = cod_grupo.y)
@@ -59,7 +57,6 @@ proc_SIM_IDPS <- proc_SIM_IDPS %>% rename("prom_csociales" = prom_nat2m_rbd)
 proc_SIM_IDPS <- proc_SIM_IDPS %>% rename("ind_clima" = ind_cc_rbd)
 proc_SIM_IDPS <- proc_SIM_IDPS %>% rename("ind_autoestima" = ind_am_rbd)
 
-# Verificar
 View(proc_SIM_IDPS)
 
 #------Casos perdidos 
@@ -79,11 +76,11 @@ sum(is.na(proc_SIM_IDPS))
 sjlabelled::get_label(proc_SIM_IDPS)
 
 # Generar etiquetas
-proc_SIM_IDPS$GSE <- set_label(x = proc_SIM_IDPS$GSE,label = "Grupo socioeconómico")
+proc_SIM_IDPS$GSE <- set_label(x = proc_SIM_IDPS$GSE,label = "Grupo socioeconomico")
 proc_SIM_IDPS$ind_clima <- set_label(x = proc_SIM_IDPS$ind_clima,label = "Puntaje Indicador Clima de Convivencia escolar del colegio")
-proc_SIM_IDPS$ind_autoestima <- set_label(x = proc_SIM_IDPS$ind_autoestima,label = "Puntaje Indicador Autoestima académica y motivación escolar del colegio")
+proc_SIM_IDPS$ind_autoestima <- set_label(x = proc_SIM_IDPS$ind_autoestima,label = "Puntaje Indicador Autoestima academica y motivacion escolar del colegio")
 proc_SIM_IDPS$prom_lectura <- set_label(x = proc_SIM_IDPS$prom_lectura,label = "Puntaje promedio del establecimiento en Lectura")
-proc_SIM_IDPS$prom_matematica <- set_label(x = proc_SIM_IDPS$prom_matematica,label = "Puntaje promedio del establecimiento en Matemática")
+proc_SIM_IDPS$prom_matematica <- set_label(x = proc_SIM_IDPS$prom_matematica,label = "Puntaje promedio del establecimiento en Matematica")
 proc_SIM_IDPS$prom_csociales <- set_label(x = proc_SIM_IDPS$prom_csociales,label = "Puntaje promedio del establecimiento en Ciencias Sociales")
 
 # Verificar etiquetas 
@@ -95,8 +92,6 @@ get_label(proc_SIM_IDPS$prom_matematica)
 get_label(proc_SIM_IDPS$prom_csociales)
 
 # Tabla estadisticos descriptivos
-stargazer(proc_SIM_IDPS,type = "text")
-
 dfSummary(proc_SIM_IDPS, plain.ascii = FALSE)
 view(dfSummary(proc_SIM_IDPS, headings=FALSE))
 
